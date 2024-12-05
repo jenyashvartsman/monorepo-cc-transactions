@@ -16,6 +16,7 @@ Update database schema
 
 ```sh
 npm run db:generate
+
 npm run db:push
 ```
 
@@ -30,5 +31,7 @@ npm run db:seed
 Run application in development
 
 ```sh
-npm run serve
+npm run serve:server
+
+npm run serve:client
 ```
