@@ -1,11 +1,23 @@
-import { Module } from '@nestjs/common';
+import { Module, ValidationPipe } from '@nestjs/common';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AccountsModule } from './features/accounts';
+import { APP_PIPE } from '@nestjs/core';
+import { CreditCardsModule } from './features/credit-cards/credit-cards.module';
+import { TransactionsModule } from './features/transactions/transactions.module';
+import { BusinessesModule } from './features/businesses/businesses.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    AccountsModule,
+    CreditCardsModule,
+    TransactionsModule,
+    BusinessesModule,
+  ],
+  providers: [
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
+    },
+  ],
 })
 export class AppModule {}
